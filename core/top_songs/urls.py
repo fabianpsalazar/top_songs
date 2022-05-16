@@ -1,12 +1,13 @@
 from .views import SongViewSet
 from django.urls import path, include
-from rest_framework.routers import DefaultRouter
+from rest_framework.routers import SimpleRouter
+from .loginviews import login
 
-router = DefaultRouter()
+router = SimpleRouter()
 router.register(r'song', SongViewSet)
 
 urlpatterns = router.urls
 
-print('############### All url routes ##############', urlpatterns)
+urlpatterns += path('login', login),
 
 

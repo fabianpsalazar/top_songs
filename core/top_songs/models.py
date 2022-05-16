@@ -6,7 +6,7 @@ from django.db import models
 
 class Track(models.Model):
 
-    track = models.IntegerField(max_length=10, primary_key=True, unique=True)
+    track_id = models.CharField(max_length=10, unique=True)
     name = models.CharField(max_length=255)
     release_date = models.DateField()
     kind = models.CharField(max_length=5)
@@ -19,7 +19,7 @@ class Track(models.Model):
 
 class Genre(models.Model):
     genre_track = models.ManyToManyField(Track, related_name='genres')
-    genreId = models.CharField(max_length=100, unique=True)
+    genreId = models.CharField(max_length=100)
     name = models.CharField(max_length=255)
     genre_url = models.URLField()
 
@@ -29,7 +29,7 @@ class Genre(models.Model):
 
 class Artist(models.Model):
     artist_track = models.ManyToManyField(Track, related_name='artist')
-    artistId = models.CharField(max_length=255,  unique=True)
+    artistId = models.CharField(max_length=255)
     artist_name = models.CharField(max_length=255)
     artist_url = models.URLField()
 

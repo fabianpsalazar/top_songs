@@ -1,5 +1,4 @@
-from django.views import View
-from django.http import HttpResponse
+
 from rest_framework import viewsets
 from rest_framework.response import Response
 from .models import Track, Artist, Genre
@@ -7,11 +6,13 @@ from rest_framework import status
 from .serializers import TrackSerializer, SongSerializer, GroupByGenreSerializer
 from rest_framework.decorators import action
 from .json_variables import song_example_format, track_example_format
+from rest_framework.permissions import IsAuthenticated
 
 
-class SongViewSet(viewsets.GenericViewSet):
+class SongViewSet(viewsets.ModelViewSet):
     queryset = Track.objects.all()
     serializer_class = SongSerializer
+    permission_classes = [IsAuthenticated]
 
     @action(detail=True, methods=['get'])
     def get_song(self, request, pk=None):
@@ -41,7 +42,7 @@ class SongViewSet(viewsets.GenericViewSet):
             return Response({
                 'Message': 'Invalid data input'
             }, status=status.HTTP_204_NO_CONTENT)
-        else:
+        elif request.method == 'GET':
             return Response({
                 'Message': 'Here you can add an entire new song with new artist and genres!',
                 'Example': song_example_format
@@ -54,16 +55,20 @@ class SongViewSet(viewsets.GenericViewSet):
             if serializer.is_valid():
                 serializer.save()
                 return Response({
-                    'Message': 'Track sucessfully registered'
+                    'Message': 'Track successfully registered'
                 }, status=status.HTTP_201_CREATED)
             return Response({
                 'Message': 'Invalid data input'
             }, status=status.HTTP_204_NO_CONTENT)
-        else:
+        elif request.method == 'GET':
             return Response({
                 'Message': 'Here you can add your track!',
                 'Example': track_example_format
-            })
+            }, status=status.HTTP_200_OK)
+        else:
+            return Response({
+                'Message': 'Try with method Get or Post!'
+            }, status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
     @action(detail=True, methods=['delete'])
     def delete_track(self, request, pk=None):
@@ -73,7 +78,7 @@ class SongViewSet(viewsets.GenericViewSet):
                 return Response({
                     'Message': 'Enter a valid track name'
                 }, status=status.HTTP_204_NO_CONTENT)
-        except:
+        except self.queryset.DoesNotExist:
             return Response(status=status.HTTP_204_NO_CONTENT)
         return Response({
             'Message': 'Track Deleted!'
@@ -90,6 +95,11 @@ class SongViewSet(viewsets.GenericViewSet):
         queryset = Genre.objects.all().filter(name__icontains=pk)
         serializer = GroupByGenreSerializer(queryset, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+
+
+
 
 
 

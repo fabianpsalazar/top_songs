@@ -10,7 +10,7 @@ class TrackSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class ArtistSerializer(UniqueFieldsMixin, serializers.ModelSerializer):
+class ArtistSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Artist
@@ -30,7 +30,7 @@ class SongSerializer(UniqueFieldsMixin, WritableNestedModelSerializer, serialize
 
     class Meta:
         model = Track
-        fields = ['name', 'track', 'release_date', 'kind', 'content_advisory_rat',
+        fields = ['name', 'track_id', 'release_date', 'kind', 'content_advisory_rat',
                   'artwork_url100', 'artist', 'genres']
 
 
