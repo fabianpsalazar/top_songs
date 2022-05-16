@@ -35,11 +35,11 @@ class SongSerializer(UniqueFieldsMixin, WritableNestedModelSerializer, serialize
 
 
 class GroupByGenreSerializer(serializers.ModelSerializer):
-    genre = TrackSerializer(many=True)
+    track = TrackSerializer(many=True)
 
     class Meta:
         model = Genre
-        fields = ['registry', 'name', 'url', 'genre']
+        fields = ['registry', 'name', 'url', 'track']
 
 
 
