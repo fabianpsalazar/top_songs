@@ -73,13 +73,11 @@ class SongViewSet(viewsets.ModelViewSet):
     @action(detail=True, methods=['delete'])
     def delete_track(self, request, pk=None):
         try:
-            track_to_dlt = self.queryset.get(name=pk).delete()
-            if not track_to_dlt:
-                return Response({
-                    'Message': 'Enter a valid track name'
-                }, status=status.HTTP_204_NO_CONTENT)
+            track_to_dlt = self.queryset.get(registry=pk).delete()
         except self.queryset.DoesNotExist:
-            return Response(status=status.HTTP_204_NO_CONTENT)
+            return Response({
+                    'Message': 'Enter a valid track_id'
+                }, status=status.HTTP_204_NO_CONTENT)
         return Response({
             'Message': 'Track Deleted!'
         }, status=status.HTTP_202_ACCEPTED)

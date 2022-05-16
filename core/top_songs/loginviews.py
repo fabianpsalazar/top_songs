@@ -34,5 +34,4 @@ def login(request):
 
     return Response({
         'token': token.key,
-        'Message': ''
-    }, status=status.H)
+    }, status=status.HTTP_200_OK)

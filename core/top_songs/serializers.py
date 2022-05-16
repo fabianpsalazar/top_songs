@@ -14,32 +14,32 @@ class ArtistSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Artist
-        fields = ['artistId', 'artist_name', 'artist_url']
+        fields = ['registry', 'name', 'url']
 
 
 class GenreSerializer(UniqueFieldsMixin, serializers.ModelSerializer):
 
     class Meta:
         model = Genre
-        fields = ['genreId', 'name', 'genre_url']
+        fields = ['id', 'name', 'url']
 
 
 class SongSerializer(UniqueFieldsMixin, WritableNestedModelSerializer, serializers.ModelSerializer):
     artist = ArtistSerializer(many=True)
-    genres = GenreSerializer(many=True)
+    genre = GenreSerializer(many=True)
 
     class Meta:
         model = Track
-        fields = ['name', 'track_id', 'release_date', 'kind', 'content_advisory_rat',
-                  'artwork_url100', 'artist', 'genres']
+        fields = ['name', 'registry', 'release_date', 'kind', 'content_advisory_rat',
+                  'artwork_url100', 'artist', 'genre']
 
 
 class GroupByGenreSerializer(serializers.ModelSerializer):
-    genre_track = TrackSerializer(many=True)
+    genre = TrackSerializer(many=True)
 
     class Meta:
         model = Genre
-        fields = ['genreId', 'name', 'genre_url', 'genre_track']
+        fields = ['registry', 'name', 'url', 'genre']
 
 
 
