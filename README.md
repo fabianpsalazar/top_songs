@@ -86,7 +86,7 @@ Create an API that has the following endpoints:
 open to any suggestions)</li>
 
   
-<b>SOLUTION:</b> It was implemented with a 'get' method called get_song that receives a request through the url and look for a song that contains the name of the song that you want to get. example url: http://localhost:8000/spot/song/Mirror/get_song/
+<b>SOLUTION:</b> It was implemented with a 'get' method called get_song that receives a request through the url and look for a song that contains the name of the song that you want to get. Example url: http://localhost:8000/spot/song/Mirror/get_song/
   
 ![getsong](https://user-images.githubusercontent.com/23225354/168676052-d366d3f1-907f-42fe-99f8-f1329f5e7951.png)
 
@@ -94,7 +94,7 @@ open to any suggestions)</li>
 <li>An endpoint that would allow to get top 50 popularity tracks.</li>
 
   
-<b>SOLUTION:</b> It was implemented with a 'get' method called get_top_50 that take the first 50 songs of the top 100 list. example url: http://localhost:8000/spot/song/get_top_50/
+<b>SOLUTION:</b> It was implemented with a 'get' method called get_top_50 that take the first 50 songs of the top 100 list. Example url: http://localhost:8000/spot/song/get_top_50/
   ![get50](https://user-images.githubusercontent.com/23225354/168676086-fd1f5c8d-0cc4-43ef-807f-c5a886aa9ba3.png)
 
  
