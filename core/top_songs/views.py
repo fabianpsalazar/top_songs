@@ -1,4 +1,3 @@
-
 from rest_framework import viewsets
 from rest_framework.response import Response
 from .models import Track, Artist, Genre
@@ -74,7 +73,7 @@ class SongViewSet(viewsets.ModelViewSet):
     def delete_track(self, request, pk=None):
         try:
             track_to_dlt = self.queryset.get(registry=pk).delete()
-        except self.queryset.DoesNotExist:
+        except:
             return Response({
                     'Message': 'Enter a valid track_id'
                 }, status=status.HTTP_204_NO_CONTENT)
