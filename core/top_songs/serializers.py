@@ -21,7 +21,7 @@ class GenreSerializer(UniqueFieldsMixin, serializers.ModelSerializer):
 
     class Meta:
         model = Genre
-        fields = ['id', 'name', 'url']
+        fields = ['registry', 'name', 'url']
 
 
 class SongSerializer(UniqueFieldsMixin, WritableNestedModelSerializer, serializers.ModelSerializer):

@@ -19,20 +19,20 @@ class Track(models.Model):
 
 class Genre(models.Model):
     track = models.ManyToManyField(Track, related_name='genre')
-    registry = models.CharField(max_length=100)
+    registry = models.CharField(max_length=100, unique=True)
     name = models.CharField(max_length=255)
     url = models.URLField()
 
     def __str__(self):
-        return self.gen
+        return self.name
 
 
 class Artist(models.Model):
     track = models.ManyToManyField(Track, related_name='artist')
-    registry = models.CharField(max_length=255)
+    registry = models.CharField(max_length=255, unique=True)
     name = models.CharField(max_length=255)
     url = models.URLField()
 
     def __str__(self):
-        return self.artist_name
+        return self.name
 
