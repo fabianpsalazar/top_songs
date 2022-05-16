@@ -11,6 +11,7 @@ from rest_framework.permissions import IsAuthenticated
 class SongViewSet(viewsets.ModelViewSet):
     queryset = Track.objects.all()
     serializer_class = SongSerializer
+    permission_classes = [IsAuthenticated,]
 
     @action(detail=True, methods=['get'])
     def get_song(self, request, pk=None):
