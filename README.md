@@ -75,7 +75,7 @@ Create an API that has the following endpoints:
 ![login](https://user-images.githubusercontent.com/23225354/168675974-26043cbd-be8e-4122-9d41-36ed3fbd82e7.png)
 
 
-#### Then with your token in any endpoint in headers use the Authorization key with value 'token __token_numer__.
+#### Then with put your token in headers and use the Authorization key with value 'token __token_numer__.
 
 ![token](https://user-images.githubusercontent.com/23225354/168676029-b460594a-331d-4b99-99f3-ea20594ecd0a.png)
 
