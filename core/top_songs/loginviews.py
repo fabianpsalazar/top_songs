@@ -18,7 +18,7 @@ def login(request):
         }, status=status.HTTP_204_NO_CONTENT)
     try:
         user = User.objects.get(username=username)
-    except User.DoesNotExist:
+    except User.DoesNotExis:
         return Response({
             'Message': 'User does not exist'
         }, status=status.HTTP_204_NO_CONTENT)
@@ -27,7 +27,7 @@ def login(request):
 
     if not pwd_valid:
         return Response({
-            'Message': 'Your password or username are incorrect'
+            'Message': 'Incorrect password or username'
         }, status=status.HTTP_401_UNAUTHORIZED)
 
     token, _ = Token.objects.get_or_create(user=user)
