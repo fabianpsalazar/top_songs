@@ -11,7 +11,6 @@ from rest_framework.permissions import IsAuthenticated
 class SongViewSet(viewsets.ModelViewSet):
     queryset = Track.objects.all()
     serializer_class = SongSerializer
-    permission_classes = [IsAuthenticated]
 
     @action(detail=True, methods=['get'])
     def get_song(self, request, pk=None):
@@ -75,7 +74,7 @@ class SongViewSet(viewsets.ModelViewSet):
             track_to_dlt = self.queryset.get(registry=pk).delete()
         except:
             return Response({
-                    'Message': 'Enter a valid track_id'
+                    'Message': 'Enter a valid registry'
                 }, status=status.HTTP_204_NO_CONTENT)
         return Response({
             'Message': 'Track Deleted!'
