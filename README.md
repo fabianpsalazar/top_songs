@@ -15,6 +15,18 @@ Thank you in advance for the opportunity to present this test!
 7. Install packages with: `pip install -r requirements.txt`.
 8. Run the follow command to fill the database with the json data and create a test user for auth api endpoints: `python manage.py util_songs`.
 9. Run server and enjoy it!: `python manage.py runserver`
+10. url patterns = http://127.0.0.1:PORT/
+- admin/
+- spot/ ^song/$ [name='track-list']
+- spot/ ^song/create_song/$ [name='track-create-song']
+- spot/ ^song/create_track/$ [name='track-create-track']
+- spot/ ^song/get_song_genre/$ [name='track-get-song-genre']
+- spot/ ^song/get_top_50/$ [name='track-get-top-50']
+- spot/ ^song/(?P<pk>[^/.]+)/$ [name='track-detail']
+- spot/ ^song/(?P<pk>[^/.]+)/delete_track/$ [name='track-delete-track']
+- spot/ ^song/(?P<pk>[^/.]+)/get_group_genre/$ [name='track-get-group-genre']
+- spot/ ^song/(?P<pk>[^/.]+)/get_song/$ [name='track-get-song']
+- spot/ login
 
 
 
