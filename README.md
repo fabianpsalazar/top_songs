@@ -1,7 +1,7 @@
 # Python Backend Developer Test
 
 
-This repository is a backend challenge proposed for the python developer vacancy.
+This repository is a backend challenge.
 
 Thank you in advance for the opportunity to present this test!
 
